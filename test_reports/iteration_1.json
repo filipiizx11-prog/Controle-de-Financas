@@ -1,0 +1,31 @@
+{
+  "summary": "First round of testing on Gestão Financeira Familiar. Backend 22/22 pytest tests pass (auth, dashboard, analytics, budget, alerts, calendar, transactions CRUD + recurrence + pay, generic CRUD for categories/accounts/tasks/reminders/notes/opportunities/goals, settings). Frontend UI login via casal@financas.com/familia123 navigates to Dashboard correctly. All 12 dashboard cards, health banner (positive) and 2 Recharts charts render. Nav to all 14 sections works. CRUD for tasks/notes/reminders/goals via UI verified. Marking Conta a Pagar as paid immediately updates Dashboard (contas_pendentes 2245→795, contas_pagas 3310→4760). Global filters (month/year/person) render. Logout via user-menu → logout-btn works and returns to login screen.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Tarefas / Lembretes / Transações modals", "issues": ["Uses native browser date/time picker (input type=date/time) instead of shadcn Calendar/DatePicker component — inconsistent with rest of design system"]},
+      {"screen": "Layout header", "issues": ["logout is nested inside user-menu dropdown (correct behavior) but playbook lists logout-btn as top-level; test scripts must first click user-menu"]}
+    ]
+  },
+  "test_report_links": ["/app/backend/tests/test_backend.py", "/app/test_reports/pytest/pytest_results.xml"],
+  "action_items": [
+    "(optional/design) Consider replacing native HTML date/time inputs with shadcn Calendar/Popover to maintain consistent dark-theme UX across Tarefas, Lembretes and Transações forms."
+  ],
+  "critical_code_review_comments": [
+    "server.py is ~860 lines — approaching the 700-line threshold; consider splitting into routers/models/services modules for maintainability.",
+    "CORS: allow_origins uses FRONTEND_URL + '*'. Combining '*' with allow_credentials=True is invalid per spec — browsers will refuse credentialed CORS. Currently works because auth also accepts Bearer header from localStorage, but cookie-based auth cross-origin may silently fail. Prefer explicit origin list without '*'.",
+    "Dashboard 'contas_pendentes' logic mixes vencimento-in-month with a global '>= today' fallback; could over-count items with vencimento in future months.",
+    "Generic CRUD register_crud lacks 404 handling on POST create when validation fails at Pydantic level (fine) and lacks GET-by-id endpoint (not used by UI — OK).",
+    "Startup uses deprecated @app.on_event; migrate to lifespan.",
+    "Data are shared globally (no workspace_id column) — expected per spec (single casal workspace), but hardcoded implicit assumption; documenting it is fine."
+  ],
+  "updated_files": ["/app/backend/tests/test_backend.py"],
+  "success_rate": {"backend": "100% (22/22)", "frontend": "100% of tested flows"},
+  "test_credentials": "casal@financas.com / familia123",
+  "seed_data_creation": "Backend seed_demo already seeds demo transactions/goals/opportunities/tasks/notes/reminders on empty DB. Tests create TEST_-prefixed data and clean up.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Nav data-testids use lowercase kebab-case with Portuguese accents preserved (e.g. nav-saídas, nav-gráficos, nav-relatórios, nav-configurações). Logout is inside user-menu dropdown: click [data-testid=user-menu] first then [data-testid=logout-btn]. Modal forms for Tarefa/Nota/Lembrete/Meta lack placeholders on 'Título' inputs — use dialog.locator('input').first to fill title. Backend endpoints are all under /api and support both httpOnly cookie and Bearer token."
+}

@@ -1,0 +1,172 @@
+{
+  "project_title": "Gestão Financeira Familiar - Painel do Casal",
+  "app_type": "dashboard / saas_app",
+  "locale": "pt-BR",
+  "currency": "BRL (R$)",
+  "theme": "Light & Dark Toggle Support (Default: Dark Slate high-contrast control panel with emerald/rose accents)",
+  "archetype": "ARCHETYPE 1 & 4 FUSION: Swiss Financial High-Contrast with Organic Precision",
+  "typography": {
+    "font_family_heading": "Outfit, Plus Jakarta Sans, sans-serif",
+    "font_family_body": "Manrope, Inter, sans-serif",
+    "font_family_mono": "JetBrains Mono, monospace",
+    "scale": {
+      "h1": "text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight",
+      "h2": "text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight",
+      "h3": "text-lg sm:text-xl font-semibold tracking-tight",
+      "h4": "text-base sm:text-lg font-medium tracking-tight",
+      "body_lg": "text-base font-normal leading-relaxed",
+      "body": "text-sm font-normal leading-normal",
+      "caption": "text-xs font-medium text-muted-foreground uppercase tracking-widest"
+    },
+    "forbidden_fonts": ["Space Grotesk"]
+  },
+  "colors": {
+    "semantic_financial": {
+      "green_positive": {
+        "text": "#10B981",
+        "bg_subtle": "rgba(16, 185, 129, 0.12)",
+        "border": "#059669",
+        "badge": "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+        "usage": "Entradas, Saldo Positivo, Contas Pagas, Metas Concluídas, Saúde Financeira Positiva"
+      },
+      "red_negative": {
+        "text": "#EF4444",
+        "bg_subtle": "rgba(239, 68, 68, 0.12)",
+        "border": "#DC2626",
+        "badge": "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
+        "usage": "Saídas, Deficit Projetado, Contas Vencidas, Alerta de Risco"
+      },
+      "yellow_warning": {
+        "text": "#F59E0B",
+        "bg_subtle": "rgba(245, 158, 11, 0.12)",
+        "border": "#D97706",
+        "badge": "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
+        "usage": "Contas Vencendo em Breve (1-7 dias), Atenção Orçamentária, Metas Parciais"
+      },
+      "blue_info": {
+        "text": "#3B82F6",
+        "bg_subtle": "rgba(59, 130, 246, 0.12)",
+        "border": "#2563EB",
+        "badge": "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
+        "usage": "Informações Gerais, Recorrências, Lembretes, Filtro Selecionado, Acompanhamento"
+      }
+    },
+    "neutral_palette": {
+      "dark_mode": {
+        "background": "#0B0F17",
+        "card_surface": "#111827",
+        "sidebar_surface": "#0D131F",
+        "border": "#1F293D",
+        "text_primary": "#F9FAFB",
+        "text_secondary": "#9CA3AF"
+      },
+      "light_mode": {
+        "background": "#F8FAFC",
+        "card_surface": "#FFFFFF",
+        "sidebar_surface": "#0F172A",
+        "border": "#E2E8F0",
+        "text_primary": "#0F172A",
+        "text_secondary": "#64748B"
+      }
+    },
+    "forbidden_colors": ["#1B93A4", "#7351B7"]
+  },
+  "layout_architecture": {
+    "structure": "Sidebar + Topbar Fixed Shell",
+    "sidebar": {
+      "width": "w-64",
+      "style": "Dark solid navy (#0F172A) in both modes or #0D131F in dark mode for maximum contrast and clear app boundaries",
+      "items": [
+        {"key": "dashboard", "label": "Dashboard", "icon": "LayoutDashboard"},
+        {"key": "entradas", "label": "Entradas", "icon": "TrendingUp"},
+        {"key": "saidas", "label": "Saídas", "icon": "TrendingDown"},
+        {"key": "contas_pagar", "label": "Contas a Pagar", "icon": "Receipt"},
+        {"key": "contas_receber", "label": "Contas a Receber", "icon": "HandCoins"},
+        {"key": "planejamento", "label": "Planejamento Mensal", "icon": "Target"},
+        {"key": "graficos", "label": "Gráficos & Análises", "icon": "BarChart3"},
+        {"key": "gerar_renda", "label": "Gerar Renda Extra", "icon": "Rocket"},
+        {"key": "tarefas", "label": "Tarefas do Mês", "icon": "CheckSquare"},
+        {"key": "calendario", "label": "Calendário Financeiro", "icon": "Calendar"},
+        {"key": "notas", "label": "Bloco de Notas", "icon": "FileText"},
+        {"key": "lembretes", "label": "Lembretes", "icon": "Bell"},
+        {"key": "relatorios", "label": "Relatórios", "icon": "FileSpreadsheet"},
+        {"key": "configuracoes", "label": "Configurações", "icon": "Settings"}
+      ]
+    },
+    "topbar": {
+      "height": "h-16",
+      "style": "Glassmorphism header border-b border-border backdrop-blur-md bg-background/80 z-40 sticky top-0",
+      "elements": [
+        "Brand Logo & Dynamic Context Title",
+        "Filtro de Mês/Ano (Ex: 'Março / 2026' com acionador de seletor rápido)",
+        "Filtro de Responsável do Casal: 'Todos / Ambos', 'Eu (Marido)', 'Cônjuge (Esposa)' com badges visuais",
+        "Indicador de Saúde Financeira Geral (Pill Badge Verde/Amarelo/Vermelho)",
+        "Central de Notificações com Badging",
+        "Avatar do Usuário / Menu de Perfil / Alternador Light-Dark"
+      ]
+    },
+    "grid_strategy": "MODE B: High Density Dashboard Grid. Mobile-first grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6. Card containers require internal padding p-5 or p-6."
+  },
+  "key_dashboard_cards": [
+    {"title": "Saldo Atual Unificado", "metric": "R$ 14.850,00", "sub": "+R$ 2.300 este mês", "status": "green"},
+    {"title": "Entradas Previstas", "metric": "R$ 18.500,00", "sub": "Salário + Freelas", "status": "green"},
+    {"title": "Saídas do Mês", "metric": "R$ 12.320,00", "sub": "66% do orçamento", "status": "blue"},
+    {"title": "Contas a Pagar", "metric": "R$ 4.150,00", "sub": "3 pendentes (1 vencendo hoje)", "status": "yellow"},
+    {"title": "Contas a Receber", "metric": "R$ 1.200,00", "sub": "2 pendentes", "status": "blue"},
+    {"title": "Saldo Projetado no Fim do Mês", "metric": "R$ 6.180,00", "sub": "Folga orçamentária", "status": "green"},
+    {"title": "Valor para Fechar o Mês", "metric": "R$ 0,00", "sub": "Não há risco imediato", "status": "green"},
+    {"title": "Renda Adicional Necessária", "metric": "R$ 0,00", "sub": "Meta do mês atingida", "status": "green"}
+  ],
+  "visual_enhancers": {
+    "card_styles": "border border-border/70 rounded-xl bg-card text-card-foreground shadow-sm hover:shadow-md hover:border-border transition-all duration-200",
+    "glow_effects": "Inner light glow for critical alert cards using shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]",
+    "badges": "Pill style rounded-full px-2.5 py-0.5 text-xs font-semibold flex items-center gap-1.5 fit-content",
+    "tables": "Clean, dense finance tables with hover rows, zebra striping option, exact alignment (text left for description, badge center, currency right with font-mono)."
+  },
+  "charts_and_data_viz": {
+    "library": "Recharts / Shadcn Chart primitives",
+    "chart_types": [
+      "BarChart: Comparativo Entradas x Saídas por Mês",
+      "AreaChart: Evolução do Saldo do Casal em tempo real com gradiente sutil",
+      "PieChart / DonutChart: Distribuicão de Gastos por Categoria (Moradia, Alimentação, Lazer, Saúde, Educação, Transporte, Investimentos)",
+      "Horizontal BarChart: Divisão de Gastos por Pessoa (Eu vs Cônjuge vs Casal)"
+    ]
+  },
+  "motion_and_interactions": {
+    "transitions": "Use target transition classes: transition-colors duration-150 ease-in-out or transition-transform duration-200",
+    "rule": "NEVER use transition: all or universal transform transitions.",
+    "hover_states": "All buttons, nav tabs, table rows must have explicit background and text color on hover. Example: hover:bg-muted/80 hover:text-foreground",
+    "entrance_animations": "Staggered fade-in using framer-motion or subtle tailwind-animate keyframes"
+  },
+  "image_urls": [
+    {
+      "category": "casal_avatar_esposa",
+      "url": "https://images.unsplash.com/photo-1758522487963-1b193a2837fd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHw0fHxoYXBweSUyMGNvdXBsZSUyMGZpbmFuY2UlMjBwbGFubmluZ3xlbnwwfHx8fDE3ODkzNzkyMTh8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Casal planejando finanças na cozinha"
+    },
+    {
+      "category": "casal_celebracao_meta",
+      "url": "https://images.unsplash.com/photo-1758523419540-035814b85c80?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNzl8MHwxfHNlYXJjaHwzfHxoYXBweSUyMGNvdXBsZSUyMGZpbmFuY2UlMjBwbGFubmluZ3xlbnwwfHx8fDE3ODkzNzkyMTh8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Casal comemorando metas atingidas"
+    }
+  ],
+  "instructions_to_main_agent": [
+    "1. Keep all UI strings in Portuguese (BR) and all monetary values in BRL format (ex: R$ 1.250,50).",
+    "2. Ensure the app works as an interactive Control Panel (Painel de Controle Financeiro), NOT a plain spreadsheet. Use filters, modals, inline quick-adds, full CRUD operations, mock data seeders, and dynamic updates.",
+    "3. Implement full filter support in TOPBAR: Month/Year picker and Person Filter (Todos, Marido, Esposa) which dynamically updates all statistics, graphs, and table data across pages.",
+    "4. For Contas a Pagar, organize grouped views into tabs or sections: 'Vencem Hoje', 'Próximos 7 Dias', 'Próximos 15 Dias', 'Próximos 30 Dias' and 'Atrasadas'.",
+    "5. For 'Gerar Renda Extra', build interactive goals with progress bars (e.g. 'Venda de desapegos', 'Projeto Freelancer', 'Consultoria') with remaining balance calculators.",
+    "6. Include mock state initialization with sensible financial default records for a realistic couple so the system looks full and operational immediately upon opening.",
+    "7. Implement responsive drawer/sheet or collapsible sidebar for mobile screens so the layout remains clean on smart phones.",
+    "8. Use Lucide icons consistently across the entire dashboard and sidebar.",
+    "9. Build all UI files using .js / .jsx React components consistent with the project setup."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "All interactive and key informational elements MUST include a data-testid attribute in kebab-case (e.g., data-testid='add-transaction-button', data-testid='current-balance-card', data-testid='person-filter-select').",
+    "Do not center-align main app container text-align globally.",
+    "Do not use transparent background in header, overlays, dropdown menus or modals.",
+    "Hover states must explicitly set hover:text-* and hover:bg-* colors.",
+    "Use 2-3x more spacing (p-6, p-8) around cards and sections to avoid cramped design slop.",
+    "Never use AI assistant emoji characters like 🤖, 🧠, 💡 for UI icons; rely strictly on Lucide React icons."
+  ]
+}
