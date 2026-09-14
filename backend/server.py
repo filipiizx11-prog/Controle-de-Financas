@@ -9,14 +9,17 @@ import logging
 from datetime import datetime, timezone, timedelta, date
 from typing import List, Optional, Annotated, Any
 
+import io
+import uuid
+import requests
 import jwt
 import bcrypt
 from bson import ObjectId
-from fastapi import FastAPI, APIRouter, Request, HTTPException, Depends
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, APIRouter, Request, HTTPException, Depends, UploadFile, File, Header, Query
+from fastapi.responses import JSONResponse, Response, StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
-from pydantic import BaseModel, Field, EmailStr, BeforeValidator, ConfigDict
+from pydantic import BaseModel, Field, BeforeValidator, ConfigDict
 
 # ----------------------------------------------------------------------------
 # DB
@@ -111,12 +114,12 @@ async def get_current_user(request: Request) -> dict:
 # ----------------------------------------------------------------------------
 class RegisterIn(BaseModel):
     name: str
-    email: EmailStr
+    phone: str
     password: str = Field(min_length=6)
 
 
 class LoginIn(BaseModel):
-    email: EmailStr
+    phone: str
     password: str
 
 
